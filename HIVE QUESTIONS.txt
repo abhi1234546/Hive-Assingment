@@ -1,0 +1,190 @@
+1. What is the definition of Hive? What is the present version of Hive? 
+
+Ans-Hive is a distributed, fault-tolerant data warehouse system that enables analytics at a massive scale.
+    And present version is 4.0
+
+2. Is Hive suitable to be used for OLTP systems? Why?
+
+Ans-No Hive is not suitable for OLTP. Because Hive does not provide insert and update at row level.
+
+3. How is HIVE different from RDBMS? Does hive support ACID 
+transactions. If not then give the proper reason.
+
+Ans- RDBMS:
+        It is type of database management system which is specifically designed for relational databases. 
+     RDBMS is a subset of DBMS.
+     Hive:
+       Hive is a data warehouse software system that provides data query and analysis.
+       Hive support Acid transaction
+     
+
+4. Explain the hive architecture and the different components of a Hive 
+architecture?
+
+Ans-Execute Query – 
+          Interface of the Hive such as Command Line or Web user interface delivers query to the driver to execute. 
+          In this, UI calls the execute interface to the driver such as ODBC or JDBC. 
+    Get Plan – 
+          Driver designs a session handle for the query and transfer the query to the compiler to make execution plan. 
+    Get Metadata – 
+          In this, the compiler transfers the metadata request to any database and the compiler gets the necessary metadata from the metastore. 
+    Send Metadata – 
+          Metastore transfers metadata as an acknowledgment to the compiler. 
+    Send Plan – 
+          Compiler communicating with driver with the execution plan made by the compiler to execute the query. 
+    Execute Plan – 
+          Execute plan is sent to the execution engine by the driver. 
+          Execute Job,Job Done,Dfs operation.
+    Fetch Results – 
+          Fetching results from the driver to the user interface (UI).
+    Send Results – 
+          Result is transferred to the execution engine from the driver. 
+5. Mention what Hive query processor does? And Mention what are the 
+components of a Hive query processor?
+
+Ans-Componenets are:-
+    Parse and Semantic Analysis.
+    Metadata Layer.
+    Type Interfaces.
+    Sessions.
+    Map/Reduce Execution Engine. 
+    Plan Components. 
+    Hive Function Framework. 
+    Tools.
+
+6. What are the three different modes in which we can operate Hive?
+
+Ans-Embedded Metastore.,Local Metastore.,Remote Metastore.
+
+7. Features and Limitations of Hive.
+
+Ans-Features:-
+    1)Supported Computing Engine
+    2)Framework
+    3)Easy To Code	
+    4)Supported data structures	
+    5)Supports ETL
+    6)Helps in processing unstructured data
+    Limitations:-
+    1)Does not support OLTP	
+    2)Doesn’t support subqueries	
+    3)Doesn’t support subqueries	
+    4)Transaction processing is not supported	
+
+8. How to create a Database in HIVE?
+
+Ans-CREATE DATABASE|SCHEMA [IF NOT EXISTS] <database name>
+
+9. How to create a table in HIVE?
+
+Ans-CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.] table_name
+
+    [(col_name data_type [COMMENT col_comment], ...)]
+    [COMMENT table_comment]
+    [ROW FORMAT row_format]
+    [STORED AS file_format]
+
+10.What do you mean by describe and describe extended and describe 
+formatted with respect to database and table
+
+Ans-
+
+11.How to skip header rows from a table in Hive?
+
+Ans-Assume name of CSV file is sample_2.csv which is present at HDFS location 'bdp/rmhd/ip/sample_2.csv' ...
+     Step 1: Create Table. ...
+     Step 2: Remove Header. ...
+
+12.What is a hive operator? What are the different types of hive operators?
+
+Ans-Apache Hive provides various Built-in operators for data operations to be implemented on the tables present inside Apache Hive warehouse. 
+    Hive operators are used for mathematical operations on operands.
+    Following are types of operatos:-
+  
+Operators Precedences.
+      Relational Operators.
+      Arithmetic Operators.
+      Logical Operators.
+      String Operators.
+
+13.Explain about the Hive Built-In Functions
+
+Ans-
+14. Write hive DDL and DML commands.
+
+Ans-DDL Comands:-
+    CREATE,SHOW,DESCRIBE,USE,DROP,ALTER,TRUNCATE.
+    DML Commands:-
+     
+15.Explain about SORT BY, ORDER BY, DISTRIBUTE BY and 
+CLUSTER BY in Hive.
+
+16.Difference between "Internal Table" and "External Table" and Mention 
+when to choose “Internal Table” and “External Table” in Hive?
+
+17.Where does the data of a Hive table get stored?
+
+Ans-Hive stores its database and table metadata in a metastore, 
+    which is a database or file backed store that enables easy data abstraction and discovery.
+18.Is it possible to change the default location of a managed table?
+
+19.What is a metastore in Hive? What is the default database provided by 
+Apache Hive for metastore?
+
+Ans-Hive Metastore is a component in Hive that stores the catalog of the system. 
+    That contains the metadata about Hive create columns, Hive table creation, and partitions.
+20.Why does Hive not store metadata information in HDFS?
+
+Ans-Because HDFS is slow, and due to it's distributed and dynamic nature.
+
+22.What is the difference between dynamic partitioning and static 
+partitioning?
+
+Ans:-While the system is up and running, static partitions are continuously present. 
+     Dynamic partitions are created and activated only as needed.
+23.How do you check if a particular partition exists?
+
+Ans-By following way:-
+    desc mytable partition (...)
+    show table extended like mytable partition (...)
+
+24.How can you stop a partition form being queried?
+
+Ans:-By using the ENABLE OFFLINE clause with ALTER TABLE atatement.
+
+25.Why do we need buckets? How Hive distributes the rows into buckets?
+
+Ans:-Useful when dealing with large datasets that may need to be segregated into clusters for more efficient 
+     management and to be able to perform join queries with other large datasets.
+
+26.In Hive, how can you enable buckets?
+
+Ans:-partition=true property
+
+27.How does bucketing help in the faster execution of queries?
+
+28.How to optimise Hive Performance? Explain in very detail.
+
+29. What is the use of Hcatalog?
+
+Ans-HCatalog is a tool that allows you to access Hive metastore tables within Pig, 
+    Spark SQL, and/or custom MapReduce applications.
+
+30. Explain about the different types of join in Hive.
+
+Ans-LEFT OUTER JOIN:-
+    The HiveQL LEFT OUTER JOIN returns all the rows from the left table, even if there are no matches in the right table. This means, if the ON clause matches 0 (zero) records in the right table,
+    the JOIN still returns a row in the result, but with NULL in each column from the right table.
+    
+RIGHT OUTER JOIN:-
+    The HiveQL RIGHT OUTER JOIN returns all the rows from the right table, even if there are no matches in the left table. If the ON clause matches 0 (zero) records in the left table, 
+    the JOIN still returns a row in the result, but with NULL in each column from the left table.
+31.Is it possible to create a Cartesian join between 2 tables, using Hive?
+
+Ans-Yes.
+
+32.Explain the SMB Join in Hive?
+
+Ans-SMB is a join performed on bucket tables that have the same sorted, bucket, and join condition columns. 
+    It reads data from both bucket tables and performs common joins (map and reduce triggered) on the bucket tables.
+
